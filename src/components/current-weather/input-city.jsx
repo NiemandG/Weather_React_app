@@ -1,3 +1,4 @@
+import './input-city.css'
 function InputCity({func}) {
     return (
         <div>
