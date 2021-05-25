@@ -4,6 +4,7 @@ import Header from '../header/header'
 import CurrentWeather from '../current-weather/current-weather'
 import InputCity from '../current-weather/input-city'
 import CityCodes from '../../api-service/city_codes'
+import WrapWeather from '../wrappers/wrap-weather'
 
 export default class App extends Component {
   weatherService = new WeatherService();
@@ -79,22 +80,18 @@ export default class App extends Component {
       return (
         <div>
           <Header/>
-            <div className="container">
-              <div className="row">
-                <div className="col-sm">
-                <InputCity func={this.onSubmit}/>
-                <CurrentWeather temp={temp} feels_like={feels_like} weather_description={weather_description}
-                  cityname={cityname} pressure={pressure} humidity={humidity} wind_speed={wind_speed} wind_direction={wind_direction} cloud={cloud} weatherService={this.updateState} code={code} 
-                  />
-                </div>
-  
-                <div className="col-sm">
-                <p>Погода в случайном городе:</p>
-                <CurrentWeather temp={temp_r} feels_like={feels_like_r} weather_description={weather_description_r}
-                  cityname={cityname_r} pressure={pressure_r} humidity={humidity_r} wind_speed={wind_speed_r} wind_direction={wind_direction_r} cloud={cloud_r} code={code_r} />
-                </div>
-              </div>
-              </div>
+          
+          <div className="container">
+              <WrapWeather left={<InputCity func={this.onSubmit}/>} right={<h5>Погода в случайном городе:</h5>}/> 
+              <WrapWeather
+                left={<CurrentWeather temp={temp} feels_like={feels_like} weather_description={weather_description}
+                      cityname={cityname} pressure={pressure} humidity={humidity} wind_speed={wind_speed} wind_direction={wind_direction} cloud={cloud} weatherService={this.updateState} code={code} 
+                      />}
+                right={<CurrentWeather temp={temp_r} feels_like={feels_like_r} weather_description={weather_description_r}
+                      cityname={cityname_r} pressure={pressure_r} humidity={humidity_r} wind_speed={wind_speed_r} wind_direction={wind_direction_r} cloud={cloud_r} code={code_r} />}
+              />
+         </div>
+
         </div>
       );
     } else {

@@ -58,11 +58,9 @@ function CurrentWeather({temp, feels_like, weather_description, cityname, pressu
           break;
 
       }
-     if(cityname !== null){
+     if(cityname !== null && cityname !== undefined ){
       return (
         <div>
-            {/* <InputCity func={onSubmit}/> */}
-      
             <div className="d-flex justify-content-center">
                 <h4>{cityname}, {str.toLocaleString("ru", options) }</h4>
             </div>
