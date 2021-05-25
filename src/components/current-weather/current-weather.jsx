@@ -58,7 +58,7 @@ function CurrentWeather({temp, feels_like, weather_description, cityname, pressu
           break;
 
       }
-     
+     if(cityname !== null){
       return (
         <div>
             {/* <InputCity func={onSubmit}/> */}
@@ -73,15 +73,26 @@ function CurrentWeather({temp, feels_like, weather_description, cityname, pressu
             <div className="d-flex justify-content-center">
                 <h5>{weather_description}</h5>
             </div>
-            <div className="">
-                <p className="weather-add">Ветер {wind_direction}, {wind_speed} м/с</p>
-                <p className="weather-add">Давление {pressure}</p>
-                <p className="weather-add">Влажность {humidity}%</p>
-                <p className="weather-add">Облачность {cloud}%</p>
+            <div className="d-flex justify-content-center">
+                <div className="me-auto">
+                  <p className="weather-add">Ветер {wind_direction}, {wind_speed} м/с</p>
+                  <p className="weather-add">Давление {pressure}</p>
+                </div>
+
+                <div className="me-auto">
+                  <p className="weather-add">Влажность {humidity}%</p>
+                  <p className="weather-add">Облачность {cloud}%</p>
+                </div>
             </div>
           
         </div>
     );
+     } else return(
+       <div>
+         
+       </div>
+     )
+
 }
   
 export default CurrentWeather;
