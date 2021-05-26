@@ -1,14 +1,11 @@
 export default class WeatherService {
-    city = 'Пермь'
     basicURL = `http://api.openweathermap.org/data/2.5/weather?appid=bc7852253a5f56c860bc7883402b2f0a&lang=ru&units=metric&q=`;
     URLwithID = 'http://api.openweathermap.org/data/2.5/weather?appid=bc7852253a5f56c860bc7883402b2f0a&lang=ru&units=metric&id=';
-   
+    URLForecast = 'http://api.openweathermap.org/data/2.5/forecast?appid=bc7852253a5f56c860bc7883402b2f0a&lang=ru&units=metric&q=';
+
     getWeather = async (city) => {
-      console.log(isNaN(city))
       if(city !== undefined && isNaN(city)){
         const result = await fetch(this.basicURL + city);
-        console.log(result)
-        console.log(isNaN(city))
         if (result.status === 404 ||result.status === 429){
           return {code: result.status}
         } 
@@ -17,8 +14,6 @@ export default class WeatherService {
       }
       if(city !== undefined && !isNaN(city)){
         const result = await fetch(this.URLwithID + city);
-        console.log(result)
-        console.log(isNaN(city))
         if (result.status === 404 ||result.status === 429){
           return {code: result.status}
         } 
@@ -27,8 +22,11 @@ export default class WeatherService {
       }
     }
 
-    getRandomWeather = async (id) => {
-      const result = await fetch
+    getForecast = async (city) => {
+      const result = await fetch(this.URLForecast + city);
+      const res = await result.json();
+      console.log(res)
+      return res;
     }
 
     getState = async (res) => {

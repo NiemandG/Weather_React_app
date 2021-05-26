@@ -1,6 +1,4 @@
 function WrapWeather({left, right}){
-
-
     return(
         <div>
             <div className="row">

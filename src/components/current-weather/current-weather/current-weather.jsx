@@ -1,12 +1,10 @@
-import Header from '../header/header';
 import './current-weather.css'
-import InputCity from './input-city';
-import sun from '../../static/sun.png'
-import cloudywithsun from '../../static/cloudywithsun.png'
-import rainy from '../../static/rainy.png'
-import mainlycloudy from '../../static/mainlycloudy.png'
-import partiallycloudy from '../../static/partiallycloudy.png'
-import snow from '../../static/snow.png'
+import sun from '../../../static/sun.png'
+import cloudywithsun from '../../../static/cloudywithsun.png'
+import rainy from '../../../static/rainy.png'
+import mainlycloudy from '../../../static/mainlycloudy.png'
+import partiallycloudy from '../../../static/partiallycloudy.png'
+import snow from '../../../static/snow.png'
 function CurrentWeather({temp, feels_like, weather_description, cityname, pressure, humidity, wind_speed, wind_direction, cloud, code}) {
     let str = new Date();
     let weatherImage = null;

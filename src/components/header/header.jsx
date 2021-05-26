@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom';
 function Header() {
     return(
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -9,13 +10,13 @@ function Header() {
     <div className="collapse navbar-collapse" id="navbarNav">
       <ul className="navbar-nav">
         <li className="nav-item">
-          <a className="nav-link active" aria-current="page" href="#">Главная</a>
+          <Link to="/current" className="nav-link active">Главная</Link> 
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">Прогноз на 5 дней</a>
+          <Link to="/forecast" className="nav-link active">Прогноз на 5 дней</Link> 
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">Предыдущие 5 дней</a>
+          <Link to="/previous" className="nav-link active">Предыдущие 5 дней</Link> 
         </li>
       </ul>
     </div>
