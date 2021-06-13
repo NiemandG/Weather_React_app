@@ -12,13 +12,12 @@ export default class App extends Component {
       <div>
          <Router>
          <Header/>
-           
               <Switch>
                 <Route path='/current'> <CurrentWeatherWrapper/> </Route>
                 <Route path='/forecast'> <Forecast/> </Route>
                 <Redirect to="/current"/>
               </Switch>
-            </Router>
+         </Router>
 
     </div>
     )

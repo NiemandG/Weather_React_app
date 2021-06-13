@@ -1,7 +1,7 @@
 import {Component, React} from 'react'
 import WeatherService from '../../../api-service/api-service'
 import CurrentWeather from '../current-weather/current-weather'
-import InputCity from '../current-weather/input-city'
+import InputCity from '../input-city/input-city'
 import CityCodes from '../../../api-service/city_codes'
 import WrapWeather from '../../wrappers/wrap-weather'
  export default class CurrentWeatherWrapper extends Component {
@@ -30,7 +30,7 @@ import WrapWeather from '../../wrappers/wrap-weather'
       this.interval = null;
     }
     updateState = (city) => {
-      this.weatherService.getWeather(city).then((res) => {
+      this.weatherService.getCurrentWeather(city).then((res) => {
         this.setState({
           cityname: res.cityname,
           cloud: res.cloud,
@@ -47,8 +47,7 @@ import WrapWeather from '../../wrappers/wrap-weather'
     }
     getRandomCity = () => {
      const b = Math.floor(Math.random() * 209579);
-      console.log(this.cityCodes.codes[b])
-      this.weatherService.getWeather(this.cityCodes.codes[b]).then((res) => {
+      this.weatherService.getCurrentWeather(this.cityCodes.codes[b]).then((res) => {
         const tempObj = {
           cityname_r: res.cityname,
           cloud_r: res.cloud,
@@ -79,18 +78,16 @@ import WrapWeather from '../../wrappers/wrap-weather'
       if (cityname !== null || cityname_r !== null){
         return (
           <div>
-            
             <div className="container">
                 <WrapWeather left={<InputCity func={this.onSubmit}/>} right={<h5>Погода в случайном городе:</h5>}/> 
                 <WrapWeather
                   left={<CurrentWeather temp={temp} feels_like={feels_like} weather_description={weather_description}
-                        cityname={cityname} pressure={pressure} humidity={humidity} wind_speed={wind_speed} wind_direction={wind_direction} cloud={cloud} weatherService={this.updateState} code={code} 
+                        cityname={cityname} pressure={pressure} humidity={humidity} wind_speed={wind_speed} wind_direction={wind_direction} cloud={cloud} code={code} 
                         />}
                   right={<CurrentWeather temp={temp_r} feels_like={feels_like_r} weather_description={weather_description_r}
                         cityname={cityname_r} pressure={pressure_r} humidity={humidity_r} wind_speed={wind_speed_r} wind_direction={wind_direction_r} cloud={cloud_r} code={code_r} />}
                 />
-           </div>
-  
+            </div>
           </div>
         );
       } else {

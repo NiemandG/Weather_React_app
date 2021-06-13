@@ -1,0 +1,14 @@
+.forecast-item{
+    width: 100%;
+    border-right: solid;
+    
+    border-color: gray;
+}
+.forecast-item:last-child{
+    border-right: none;
+}
+
+.d-picture{
+    display: block;
+  margin: 0 auto;
+}

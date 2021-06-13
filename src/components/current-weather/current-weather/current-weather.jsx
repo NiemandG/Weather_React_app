@@ -5,6 +5,7 @@ import rainy from '../../../static/rainy.png'
 import mainlycloudy from '../../../static/mainlycloudy.png'
 import partiallycloudy from '../../../static/partiallycloudy.png'
 import snow from '../../../static/snow.png'
+import mist from '../../../static/mist.png'
 function CurrentWeather({temp, feels_like, weather_description, cityname, pressure, humidity, wind_speed, wind_direction, cloud, code}) {
     let str = new Date();
     let weatherImage = null;
@@ -53,6 +54,9 @@ function CurrentWeather({temp, feels_like, weather_description, cityname, pressu
           break;
         case 'небольшой снег':
           weatherImage = snow;
+          break;
+        case 'туман':
+          weatherImage = mist;
           break;
 
       }
